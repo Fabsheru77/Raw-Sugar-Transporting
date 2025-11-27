@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar Transport System</title>
+    <link rel="stylesheet" href="rawSugarTrans.css">
+</head>
+<body>
+    <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+    
+    <div class="alarm-panel" id="alarmPanel">
+        <h3>STORAGE MAXIMUM LIMIT REACHED!</h3>
+        <p>System has been shut down due to storage capacity exceeded.</p>
+        <p>Current Storage: <span id="alarmStorageValue">0</span> kg</p>
+        <button class="alarm-reset-btn" id="alarmResetBtn">RESET ALARM & CONTINUE</button>
+    </div>
+    
+    <div class="alarm-status" id="alarmStatus">Storage: Normal</div>
+    
+    <div id="scene">
+        <div id="sea"><div class="wave"></div></div>
+        <div id="ship"><div id="ship-gate"></div></div>
+        <div id="crane">
+            <div id="crane-base"></div>
+            <div id="crane-tower"></div>
+            <div id="crane-arm"></div>
+            <div id="crane-cable"></div>
+            <div id="crane-hook"></div>
+        </div>
+        <div id="conveyor1" class="conveyor"><div class="belt"></div><div class="status-panel" id="panel1">CONVEYOR 1</div></div>
+        <div id="conveyor2" class="conveyor"><div class="belt"></div><div class="status-panel" id="panel2">CONVEYOR 2</div></div>
+        <div id="conveyor3" class="conveyor"><div class="belt"></div><div class="status-panel" id="panel3">CONVEYOR 3</div></div>
+        <div id="weigher">
+            <div id="weigher-feed-gate" class="weigher-gate">
+                <div class="valve-handle"></div>
+                <div class="gate-label" id="feed-gate-label">FEED VALVE</div>
+            </div>
+            <div id="weigher-content"></div>
+            <div id="weigher-discharge-gate" class="weigher-gate">
+                <div class="valve-handle"></div>
+                <div class="gate-label" id="discharge-gate-label">DISCHARGE VALVE</div>
+            </div>
+            <div class="weight-display" style="top:-35px;left:0" id="weight-display">0 kg</div>
+            <div class="status-panel" style="bottom:-50px;left:0" id="weigher-panel">WEIGHING</div>
+        </div>
+        <div id="conveyor4" class="conveyor"><div class="belt"></div><div class="status-panel" id="panel4">CONVEYOR 4</div></div>
+        <div id="conveyor5" class="conveyor"><div class="belt"></div><div class="status-panel" id="panel5">MOBILE CONVEYOR</div></div>
+        <div class="position-controls">
+            <button id="pos1Btn">Position 1</button>
+            <button id="pos2Btn">Position 2</button>
+        </div>
+        <div id="storage">
+            <div id="storage-content"></div>
+            <div class="storage-slot" id="storage-slot1"></div>
+            <div class="storage-slot" id="storage-slot2"></div>
+            <div class="status-panel" style="top:-50px;left:0" id="storage-panel">STORAGE: 0 Tons</div>
+            <div class="storage-info">MAX: 1500 Tons</div>
+             
+        </div>
+        <div id="sugar"></div>
+    </div>
+    
+    <audio id="gateSound" src="https://assets.mixkit.co/sfx/preview/mixkit-metal-gear-fence-gate-1566.mp3"></audio>
+    <audio id="alarmSound" src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3"></audio>
+    <audio id="conveyorSound" src="https://assets.mixkit.co/sfx/preview/mixkit-mechanical-belt-conveyor-1129.mp3" loop></audio>
+    
+    <script src="rawSugarTrans.js"></script>
+</body>
+</html>
