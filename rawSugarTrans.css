@@ -1,0 +1,451 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #87CEEB;
+    font-family: Arial, sans-serif;
+}
+
+#scene {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#sea {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background: #1E90FF;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%231E90FF"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%231E90FF"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%231E90FF"/></svg>');
+    animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+#ship {
+    position: absolute;
+    bottom: 10%;
+    left: -300px;
+    width: 250px;
+    height: 100px;
+    background: #8B4513;
+    border-radius: 10px 10px 0 0;
+    transition: left 5s linear;
+}
+
+#ship:before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50px;
+    width: 30px;
+    height: 60px;
+    background: #A52A2A;
+}
+
+#ship:after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 55px;
+    width: 20px;
+    height: 20px;
+    background: #D3D3D3;
+    border-radius: 50%;
+}
+
+#ship-gate {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 60px;
+    background: #A0522D;
+    transform-origin: left bottom;
+    transition: transform 2s;
+}
+
+#crane {
+    position: absolute;
+    bottom: 10%;
+    left: 390px;
+    width: 150px;
+    height: 200px;
+}
+
+#crane-base {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: #808080;
+}
+
+#crane-tower {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: 20px;
+    height: 450px;
+    background: #696969;
+    transform: translateX(-50%);
+}
+
+#crane-arm {
+    position: absolute;
+    top: -10;
+    left: 50%;
+    width: 150px;
+    height: 10px;
+    background: #A9A9A9;
+    transform-origin: left center;
+    transform: rotate(210deg);
+}
+
+#crane-cable {
+    position: absolute;
+    bottom: -100px;
+    left: 0%;
+    width: 10px;
+    height: 225px;
+    bottom: 50px;
+    background: #000;
+    transform: translateX(-650%);
+}
+
+#crane-hook {
+    position: absolute;
+    bottom: 260px;
+    left: 0%;
+    width: 25px;
+    height: 125px;
+    background: #FFD700;
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-292%);
+}
+
+.conveyor {
+    position: absolute;
+    height: 30px;
+    background: #708090;
+    transition: left 1s;
+}
+
+#conveyor1 {
+    bottom: 85%;
+    left: 400px;
+    width: 160px;
+}
+
+#conveyor2 {
+    bottom: 80%;
+    left: 550px;
+    width: 150px;
+}
+
+#conveyor3 {
+    bottom: 76%;
+    left: 700px;
+    width: 150px;
+}
+
+#conveyor4 {
+    bottom: 44%;
+    left: 855px;
+    width: 200px;
+}
+
+#conveyor5 {
+    bottom: 37%;
+    left: 1100px;
+    width: 175px;
+}
+
+.belt {
+    position: absolute;
+    width: 100%;
+    height: 11px;
+    background: #D3D3D3;
+    animation: beltMove 3s linear infinite;
+}
+
+@keyframes beltMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 35px 0; }
+}
+
+.status-panel {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+#weigher {
+    position: absolute;
+    bottom: 60%;
+    left: 850px;
+    width: 80px;
+    height: 100px;
+    background: #2F4F4F;
+    border: 2px solid #000;
+}
+
+.weigher-gate {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #4682B4;
+    border: 2px solid #000;
+    transition: all 1s;
+}
+
+#weigher-feed-gate {
+    top: -2px;
+}
+
+#weigher-discharge-gate {
+    bottom: -2px;
+}
+
+#storage {
+    position: absolute;
+    bottom: 10%;
+    left: 1100px;
+    width: 155px;
+    height: 90px;
+    background: #556B2F;
+    border-radius: 15px;
+}
+
+#sugar {    
+    position: absolute;
+    width: 55px;
+    height: 15px;
+    background: #F5DEB3;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+
+button {
+    padding: 10px 20px;
+    margin-right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    background-color: hsl(109, 100%, 59%);
+}
+
+.alarm {
+    animation: alarmFlash 0.5s infinite alternate;
+}
+
+@keyframes alarmFlash {
+    from { background-color: red; }
+    to { background-color: #900; }
+}
+
+.weight-display {
+    position: absolute;
+    width: 80px;
+    height: 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#weigher-content {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background: #F5DEB3;
+    transition: height 2s;
+    height: 0;
+}
+
+#storage-content {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background: #F5DEB3;
+    height: 5;
+    transition: height 2s;
+    border-radius: 10px;
+}
+
+.gate-label {
+    position: absolute;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    z-index: 1;
+}
+
+#feed-gate-label {
+    top: -20px;
+}
+
+#discharge-gate-label {
+    bottom: -0.5px;
+}
+
+#storage-warning {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 500;
+    text-shadow: 0 0 5px #fff;
+}
+
+.storage-info {
+    position: absolute;
+    bottom: -30px;
+    left: 20;
+    width: 80%;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+}
+
+.valve-handle {
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    background: #FFD700;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.storage-slot {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+}
+
+#storage-slot1 {
+    top: 10px;
+    left: 15px;
+}
+
+#storage-slot2 {
+    top: 10px;
+    left: 78px;
+}
+
+.position-controls {
+    position: absolute;
+    bottom: 20%;
+    left: 710px;
+    display: flex;
+    gap: 10px;
+}
+
+.system-interlock {
+    background-color: #f00 !important;
+    color: #fff !important;
+}
+
+.alarm-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4444;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+    max-width: 300px;
+    text-align: center;
+}
+
+.alarm-panel.active {
+    display: block;
+    animation: alarmFlash 0.5s infinite alternate;
+}
+
+.alarm-reset-btn {
+    background: #fff;
+    color: #ff4444;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.alarm-reset-btn:hover {
+    background: #f0f0f0;
+}
+
+.alarm-status {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 100;
+}
+
+.alarm-status.active {
+    background: #ff4444;
+    animation: alarmFlash 0.5s infinite alternate;
+}
+
+/* Add this to your existing CSS file */
+.storage-panel-alarm {
+    cursor: pointer;
+    animation: alarmFlash 0.5s infinite alternate;
+    background-color: #ff4444 !important;
+}
+
+.storage-panel-alarm:hover {
+    background-color: #ff6666 !important;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
